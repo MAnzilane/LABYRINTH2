@@ -32,7 +32,7 @@
 typedef enum eDesigneWorld {EMPTY, WBD, WBU, WMD, WMU, WED, WEU, WM, BOX, KEY,
                             DDC, DUC, DDO, DUO, BRIGEB, BRIGEE, ROCK, VEGETABLE,
                             PIKETRAP,HOLE} DesignType;
-                            
+
 typedef enum eType {FIXED, MOBILE, TRAP, ACTIVE, INACTIVE} Type;
 
 
