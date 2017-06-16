@@ -16,6 +16,7 @@
 /**\brief reprente an object of game's environment
 @param box : contains this object
 @param typeObj : sort of pbject [FIXED or MOBILE]
+@param typeOfObj : design of obj
 */
 typedef struct sObject {
     Box *box;
@@ -52,6 +53,20 @@ Box * getBoxObj(const Object * obj);
 @param obj
 */
 int getTypeOfObj(const Object * obj);
+
+/**\brief return the reely x position of obj
+@param coordX
+@param w
+return pxPosX
+*/
+int calcPxPosXOfObj(int coordX, int w);
+
+/**\brief return the reely y position of obj
+@param coordY
+@param h
+return pxPosY
+*/
+int calcPxPosYOfObj(int coordY, int h);
 
 /**\brief to free obj
 @param obj : object to be destroy

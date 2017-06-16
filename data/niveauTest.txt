@@ -1,5 +1,40 @@
-42 
-16
+#tilsetprop
+data/mondeForet.png
+tul0: empty
+tul1: solid
+tul2: solid
+tul3: solid
+tul4: solid
+tul5: solid
+tul6: solid
+tul7: solid
+tul8: solid
+tul9: solid
+tul10: solid
+tul11: solid
+tul12: empty
+tul13: solid
+tul14: empty
+tul15: empty
+tul16: empty
+tul17: solid
+tul18: solid
+tul19: solid
+tul20: solid
+tul21: solid
+tul22: solid
+tul23: solid
+tul24: solid
+tul25: empty
+tul26: empty
+tul27: empty
+tul28: empty
+tul29: empty
+tul30: empty
+#endtilsetprop
+
+#level
+42 16
 10  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 10 10
 10  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 10 10
 10  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 10 10
@@ -16,3 +51,4 @@
 10  0  0  0  0  0  0  5  3  0  0 30  0  0  0  0 16  0  0  0  0  0  0  0  0  0  0 10 10  0  0 10  0  0  0  0  0  0  0  0 23 10
 10  6  6  6  6  6  6 10 10  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6 10 10  6  6 10 19  6  6  6  6  6  6  6  6 10
 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+#endlevel

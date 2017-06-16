@@ -18,13 +18,12 @@ WorldGame * createWldGame(int * typeOfDesign) {
     Box * box = NULL;
     for (size_t i = 0; i < getSizeWldGame(wldGame); i++) {
         //position of obj
-        coord = createCoord(calcCoordX(i, w), calcCoordY(i, h));
+        coord = createCoord(calcCoordX(i, w), calcCoordY(i, w));
+        // printf("x  = %d   y = %d\n", calcCoordX(i, w), calcCoordY(i, w));
         //contains obj
-        box = createBox(coord, SIZEBOX, SIZEBOX);
+        box = createBox(coord, WBOX, HBOX);
         //create a new obj
-        wldGame->obj[i] = createObj(box, FIXED, typeOfDesign[j]);
-        // printf("%d\n", typeOfDesign[i+2]);
-        //printObj(wldGame->obj[i-2]);
+        wldGame->obj[i] = createObj(box, FIXED, typeOfDesign[j++]);
     }
     return wldGame;
 }
@@ -42,17 +41,12 @@ int getSizeWldGame(const WorldGame * wldGame) {
     return (getHWldGame(wldGame)*getWWldGame(wldGame));
 }
 
-int * typeOfDesignFromFile(char * filname) {
-    FILE * file = NULL;
-    if ((file = fopen(filname, "r")) == NULL) {
-        fprintf(stderr, "error open fic \n");
-        exit(ERROACCESSFILE);
-    }
+int * typeOfDesignFromFile(FILE * file) {
 
     int w = 0; int h = 0;
-
-    fscanf(file, "%d", &w);
-    fscanf(file, "%d", &h);
+    fscanf(file, "%d %d", &w, &h);
+    // printf("w = %d, h = %d\n", w, h);
+    // fscanf(file, "%d", &h);
     int val = 0; int i = 2; int cpt = 0;
     int *typeOfDesign = malloc(sizeof(int)*(w*h+3));
     if (typeOfDesign == NULL) {
@@ -60,22 +54,22 @@ int * typeOfDesignFromFile(char * filname) {
         exit(MALOCERRO);
     }
     typeOfDesign[0] = w; typeOfDesign[1] = h;
-    while (!feof(file)) {
+    int j = 0;
+    while (j < w*h) {
         fscanf(file,"%d", &val);
         if (val != 32 || val != 13) {
             typeOfDesign[i++] = val;
-            // printf("%d \n",typeOfDesign[i-1]);
+            // printf("%d\n", val);
+            j++;
         }
     }
-    assert(file);
-    fclose(file);
-    file = NULL;
     return typeOfDesign;
 }
 
 void printWldGame(const WorldGame * wldGame) {
     for (size_t i = 0; i < getSizeWldGame(wldGame); i++) {
         printObj(wldGame->obj[i]);
+        // printf("%d\n", getTypeOfObj(wldGame->obj[i]));
     }
 }
 
@@ -91,10 +85,32 @@ void destroyWldGame(WorldGame * wldGame) {
 }
 
 
-int testWorldGame() {
-    int * typeOfDesign = typeOfDesignFromFile("/home/manzilane/Documents/Labyrith2/LABYRINTH2/data/niveauTest.txt");
+int testWorldGame(char * filname) {
+    FILE * file = NULL;
+    char buf0[30];
+    char buf1[30];
+    if ((file = fopen(filname, "r")) == NULL) {
+        fprintf(stderr, "error open fic \n");
+        exit(ERROACCESSFILE);
+    }
+    int * typeOfDesign;
+    int ok = 1;
+    do {
+        fscanf(file, "%s", buf0);
+        if (strcmp(buf0, "#level") == 0) {
+            printf("je rentre la \n");
+            typeOfDesign = typeOfDesignFromFile(file);
+            // printf("%s\n", buf0);
+        }
+        printf("%s\n", buf0);
+        if (strcmp(buf0, "#endlevel") == 0) {
+            ok = 0;
+        }
+    } while(ok);
+    printf("je sort de la boucle et %d \n", typeOfDesign[0]);
     WorldGame * wldGame = createWldGame(typeOfDesign);
     printWldGame(wldGame);
     destroyWldGame(wldGame);
     free (typeOfDesign);
+    fclose(file);
 }

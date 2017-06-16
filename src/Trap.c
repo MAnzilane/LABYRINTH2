@@ -69,7 +69,7 @@ void testTrap() {
 
     Box * box = createBox(coord, w, h);
 
-    Object * obj = createObj(box, typeObj, PIKETRAP);
+    Object * obj = createObj(box, typeObj, TRAP1);
 
     Trap * trap = createTrap(obj, typeTrap);
     printf("\ntype of trap %d\n", getTypeOfTrap(trap));
