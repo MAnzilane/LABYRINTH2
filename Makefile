@@ -20,13 +20,15 @@ Character.o :
 	$(CC) -c $(DIRSRC)/Character.c -o $(DIROBJ)/Character.o
 WorldGame.o :
 	$(CC) -c $(DIRSRC)/WorldGame.c -o $(DIROBJ)/WorldGame.o
+IhmSdl.o :
+	$(CC) -c $(DIRSRC)/IhmSdl.c -o $(DIROBJ)/IhmSdl.o
 main.o :
 	$(CC) -c $(DIRSRC)/main.c -o $(DIROBJ)/main.o
-EXEC : Coordinates.o Box.o Object.o Trap.o Character.o WorldGame.o main.o
-	$(CC) $(CFLAGS) -o ./bin/Labyrinth $(DIROBJ)/*.o  $(LDFLAGS) 	#-lSDL -lSDL_image
+EXEC : Coordinates.o Box.o Object.o Trap.o Character.o WorldGame.o IhmSdl.o main.o
+	$(CC) $(CFLAGS) -o ./bin/Labyrinth $(DIROBJ)/*.o  $(LDFLAGS) -lSDL -lSDL_image
 
 clean: ;
 	rm $(DIROBJ)/*.o
 
 maxclean:
-	rm $(DIROBJ)/*.o ./bin/Labyrinth
+	rm $(DIROBJ)/*.o ./bin/Labyrinth vgcore.*

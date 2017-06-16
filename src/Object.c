@@ -20,7 +20,7 @@ Object * initObj() {
 }
 
 Object * createObj(Box *box, Type typeObj, DesignType typeOfObj) {
-    Object * obj = initObj();
+    Object *obj = initObj();
     assert(box);
     obj->box = box;
     obj->typeOfObj = typeOfObj;
@@ -28,18 +28,26 @@ Object * createObj(Box *box, Type typeObj, DesignType typeOfObj) {
     return obj;
 }
 
-Type getTypeObj(const Object * obj) {
+Type getTypeObj(const Object *obj) {
     assert(obj);
     return obj->typeObj;
 }
 
-Box * getBoxObj(const Object * obj) {
+Box * getBoxObj(const Object *obj) {
     assert(obj);
     return obj->box;
 }
 
-int getTypeOfObj(const Object * obj) {
+int getTypeOfObj(const Object *obj) {
     return obj->typeOfObj;
+}
+
+int calcPxPosXOfObj(int coordX, int w) {
+    return coordX * w;
+}
+
+int calcPxPosYOfObj(int coordY, int h) {
+    return coordY * h;
 }
 
 void destroyObj(Object *obj) {

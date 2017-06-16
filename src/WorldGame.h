@@ -55,8 +55,14 @@ int getWWldGame(const WorldGame * wldGame);
 */
 int getSizeWldGame(const WorldGame * wldGame);
 
-int * typeOfDesignFromFile(char * filname);
+/**\brief
+@filname
+@return tab of type of Design*/
+int * typeOfDesignFromFile(FILE * file);
 
+/**\brief
+@wldGame
+*/
 void printWldGame(const WorldGame * wldGame);
 
 /**\brief
@@ -64,5 +70,6 @@ void printWldGame(const WorldGame * wldGame);
 */
 void destroyWldGame(WorldGame * wldGame);
 
-int testWorldGame();
+int testWorldGame(char * filname);
+
 #endif /* WorldGame_h */
